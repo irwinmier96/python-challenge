@@ -1,0 +1,30 @@
+import os
+
+import csv
+
+csvpath = os.path.join('budget_data.csv')
+
+total_sum = []
+
+with open(csvpath, newline = '') as csvfile:
+
+    csvreader =csv.reader(csvfile, delimiter = ',')
+
+    for month in csvreader:
+        #line_num is a built-in csv function that counts all the rows in 
+        #a csv file. Need the total amount of months = total amount of rows
+        #excluding the header.
+        month = csvreader.line_num - 1
+
+    print(f"Total Months: {month}")
+
+    #reset the file pointer the csvreader 
+    #is associated with so that you can iterate over it again.
+    csvfile.seek(0)
+    next(csvreader)
+    
+    for row in csvreader:
+         total_sum.append(int(row[1]))
+
+        
+    print(f"Total: ${sum(total_sum)}")
