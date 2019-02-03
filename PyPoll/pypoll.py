@@ -15,6 +15,8 @@ with open(csvpath, newline = '') as csvfile:
 
     csvreader =csv.reader(csvfile, delimiter = ',')
 
+    #Finding the total amount of votes 
+    #Total amount of votes is the total amount of rows excluding header
     for total_votes in csvreader:
 
         total_votes = csvreader.line_num - 1
@@ -23,7 +25,8 @@ with open(csvpath, newline = '') as csvfile:
 
     csvfile.seek(0)
     next(csvreader)
-
+    
+    #Adding votes for each candidate under separate lists
     for votes in csvreader:
         if votes[2] == "Khan":
             Khan_vote.append(votes[2])
@@ -38,6 +41,9 @@ with open(csvpath, newline = '') as csvfile:
             O_Tooley_vote.append(votes[2])
             O_Tooley_percent = (len(O_Tooley_vote)/ total_votes) * 100
 
+    #Making a dictionary to store the candidates and their votes
+    #Use this to extract key-value pairs and determine which
+    #of these candidates acquired the most votes
     Winner["Khan"] = len(Khan_vote)
     Winner["Correy"] = len(Correy_vote)
     Winner["Li"] = len(Li_vote)
