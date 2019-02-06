@@ -68,7 +68,13 @@ with open(csvpath, newline = '') as csvfile:
     print(f"Greatest Increase: {increase_max_date} (${increase_max})")
     print(f"Greatest Decrease: {decrease_max_date} (${decrease_max})")
 
-  
+    newFile = open("bank_results.txt", "w") 
+    newFile.write("Bank Results \n")
+    newFile.write(f"Total Months: {month}\n")
+    newFile.write(f"Average Change: {ProfitLossAvg}\n")
+    newFile.write(f"Greatest Increase: {increase_max_date} (${increase_max})\n")
+    newFile.write(f"Greatest Decrease: {decrease_max_date} (${decrease_max})\n")
+    newFile.close()
 
   
    
