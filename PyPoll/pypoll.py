@@ -21,8 +21,6 @@ with open(csvpath, newline = '') as csvfile:
 
         total_votes = csvreader.line_num - 1
 
-    print(f"Total Votes: {total_votes}")
-
     csvfile.seek(0)
     next(csvreader)
     
@@ -51,10 +49,23 @@ with open(csvpath, newline = '') as csvfile:
     candidates = list(Winner.keys())
     vote_count = list(Winner.values())
     candidate_votes = candidates[vote_count.index(max(vote_count))]
-    print(Winner)
-
+    
+    
+    print("Election Results")           
+    print(f"Total Votes: {total_votes} ")
     print(f"Khan: {round(Khan_percent, 3)}%  ({len(Khan_vote)})")
     print(f"Correy: {round(Correy_percent, 3)}%  ({len(Correy_vote)})")
     print(f"Li: {round(Li_percent, 3)}%  ({len(Li_vote)})")
     print(f"O'Tooley: {round(O_Tooley_percent, 3)}%  ({len(O_Tooley_vote)})")
     print(f"Winner: {candidate_votes}")
+     
+    newFile = open('results.txt',"w")
+    newFile.write("Election Results\n")
+    newFile.write(f"Total Votes: {total_votes}\n ")
+    newFile.write(f"Khan: {round(Khan_percent, 3)}%  ({len(Khan_vote)})\n")
+    newFile.write(f"Correy: {round(Correy_percent, 3)}%  ({len(Correy_vote)})\n")
+    newFile.write(f"Li: {round(Li_percent, 3)}%  ({len(Li_vote)})\n")
+    newFile.write(f"O'Tooley: {round(O_Tooley_percent, 3)}%  ({len(O_Tooley_vote)})\n")
+    newFile.write(f"Winner: {candidate_votes}")
+    newFile.close()
+    
