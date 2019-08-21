@@ -1,2 +1,2 @@
-# python-challenge
-For HW 3
+# Python Coding Activity
+Python Coding practice analyzing the dataset of an election.
